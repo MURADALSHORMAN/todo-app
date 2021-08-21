@@ -1,42 +1,22 @@
-import React from 'react';
-import { useState } from 'react';
-import uuid from 'react-uuid';
-export const ListContext = React.createContext();
+import React, { Component } from 'react';
+export const settingsContext = React.createContext();
 
-function ListSetting(props) {
-  const [list, setList] = useState([]);
-  const [values, setValues] = useState({});
+export default class Settings extends Component {
+  constructor(props) {
+    super(props);
 
-  function handleSubmit(event) {
-    if (event) event.preventDefault();
-    values.id = uuid();
-    values.complete = false;
-    setList([...list, values]);
-    event.target.reset();
+    this.state = {
+           itemsPerPage: 3,
+      sort: 'Ascending',
+      show: true,
+    };
   }
 
-  function handleChange(event) {
-    setValues((values) => ({
-      ...values,
-      [event.target.name]: event.target.value
-    }));
+  render() {
+    return (
+      <settingsContext.Provider value={this.state}>
+        {this.props.children}
+      </settingsContext.Provider>
+    );
   }
-
-  function toggleComplete(id) {
-    const items = list.map((item) => {
-      if (item.id === id) {
-        item.complete = !item.complete;
-      }
-      return item;
-    });
-    setList(items);
-  }
-
-  return (
-    <ListContext.Provider value={{ list, handleChange, handleSubmit, toggleComplete }}>
-      {props.children}
-    </ListContext.Provider>
-  );
 }
-
-export default ListSetting;
