@@ -7,7 +7,7 @@ import Header from './components/Header.jsx';
 import SettingsForm from './components/SettingsForm.jsx';
 import AuthContext from './context/auth/context.js';
 import './app.scss';
-import Auth from './components/Auth';
+import Auth from './components/Auth.jsx';
 
 export default class App extends React.Component {
   render() {

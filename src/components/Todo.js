@@ -8,7 +8,6 @@ import Login from './Login.jsx';
 import { If, Else, Then } from 'react-if';
 import { AuthContext } from '../context/auth/context';
 import Logout from './Logout.jsx';
-import axios from 'axios';
 
 const ToDo = () => {
   const [list, setList] = useState([]);
@@ -16,44 +15,26 @@ const ToDo = () => {
   const { handleChange, handleSubmit } = useForm(addItem);
   const auth = useContext(AuthContext);
 
-  useEffect(async () => {
-    const allList = await axios.get(
-      'https://api-js401.herokuapp.com/api/v1/todo'
-    );
-    setList(allList.data.results);
-  }, []);
-
-  useEffect(async () => {
-    const allList = await axios.get(
-      'https://api-js401.herokuapp.com/api/v1/todo'
-    );
-    setList(allList.data.results);
-  }, [list]);
-
-  async function addItem(item) {
+  function addItem(item) {
     console.log(item);
     item.id = uuid();
     item.complete = false;
-    await axios.post('https://api-js401.herokuapp.com/api/v1/todo', item);
     setList([...list, item]);
   }
 
-  async function deleteItem(_id) {
-    const items = list.filter((item) => item._id !== _id);
-    await axios.delete(`https://api-js401.herokuapp.com/api/v1/todo/${_id}`);
+  function deleteItem(id) {
+    const items = list.filter((item) => item.id !== id);
     setList(items);
   }
 
-  async function toggleComplete(_id, item) {
+  function toggleComplete(id) {
     const items = list.map((item) => {
-      if (item._id == _id) {
-        console.log(item, 'item');
+      if (item.id == id) {
         item.complete = !item.complete;
       }
       return item;
     });
 
-    await axios.put(`https://api-js401.herokuapp.com/api/v1/todo/${_id}`, item);
     setList(items);
   }
 
@@ -69,10 +50,12 @@ const ToDo = () => {
         <Then>
           <Login />
         </Then>
-
         <Else>
           <Logout />
-
+        </Else>
+      </If>
+      <If condition={auth.loggedIn}>
+        <Then>
           <Auth capability="read">
             <h2>{incomplete.length} items pending</h2>
 
@@ -89,7 +72,7 @@ const ToDo = () => {
               />
             </div>
           </Auth>
-        </Else>
+        </Then>
       </If>
     </div>
   );

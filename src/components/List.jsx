@@ -23,6 +23,7 @@ export default function List(props) {
         settings.itemsPerPage
       )
     );
+    // console.log(activeList);
     console.log(settings.itemsPerPage);
 
     setPagesNum(
@@ -105,7 +106,7 @@ export default function List(props) {
             elevation={Elevation.THREE}
             key={item.id}
           >
-           
+            {console.log(item)}
             <h3>
               <b>{item.text} </b>
             </h3>
@@ -122,7 +123,7 @@ export default function List(props) {
                 className={
                   item.complete ? 'bp3-intent-success' : 'bp3-intent-danger'
                 }
-                onClick={() => props.toggleComplete(item._id, item)}
+                onClick={() => props.toggleComplete(item.id)}
               >
                 Complete : {item.complete.toString()}
               </Button>
@@ -133,7 +134,7 @@ export default function List(props) {
                 class="@ns-button"
                 type="button"
                 intent="danger"
-                onClick={() => props.deleteItem(item._id)}
+                onClick={() => props.deleteItem(item.id)}
               >
                 delete Item
               </Button>

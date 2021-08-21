@@ -58,7 +58,7 @@ export default function SettingsForm() {
                       max={5}
                       min={1}
                       required
-                      
+                     
                     />
                   </Label>
 
