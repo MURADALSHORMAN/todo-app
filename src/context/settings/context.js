@@ -1,42 +1,36 @@
-import React from 'react';
-import { useState } from 'react';
-import uuid from 'react-uuid';
-export const ListContext = React.createContext();
+import React, { useState, useEffect } from 'react';
+export const settingsContext = React.createContext();
 
-function ListSetting(props) {
-  const [list, setList] = useState([]);
-  const [values, setValues] = useState({});
+export default function Settings(props) {
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [show, setShow] = useState(true);
+  const [sort, setSort] = useState('Ascending');
 
-  function handleSubmit(event) {
-    if (event) event.preventDefault();
-    values.id = uuid();
-    values.complete = false;
-    setList([...list, values]);
-    event.target.reset();
-  }
+  useEffect(() => {
+    let raw = localStorage.getItem('settings');
+    if (raw) {
+      let data = JSON.parse(raw);
+      console.log('data', data);
+      setItemsPerPage(Number(data.itemPerPage));
 
-  function handleChange(event) {
-    setValues((values) => ({
-      ...values,
-      [event.target.name]: event.target.value
-    }));
-  }
-
-  function toggleComplete(id) {
-    const items = list.map((item) => {
-      if (item.id === id) {
-        item.complete = !item.complete;
-      }
-      return item;
-    });
-    setList(items);
-  }
+      setShow(data.show == 'on' ? true : false);
+    }
+  }, []);
 
   return (
-    <ListContext.Provider value={{ list, handleChange, handleSubmit, toggleComplete }}>
-      {props.children}
-    </ListContext.Provider>
+    <div>
+      <settingsContext.Provider
+        value={{
+          itemsPerPage,
+          setItemsPerPage,
+          show,
+          setShow,
+          sort,
+          setSort,
+        }}
+      >
+        {props.children}
+      </settingsContext.Provider>
+    </div>
   );
 }
-
-export default ListSetting;

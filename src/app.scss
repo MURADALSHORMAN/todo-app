@@ -1,0 +1,74 @@
+@import '~normalize.css';
+@import '~@blueprintjs/core/lib/css/blueprint.css';
+@import '~@blueprintjs/icons/lib/css/blueprint-icons.css';
+
+.hedear {
+  padding-left: 120px !important;
+  background-color: rgb(5, 5, 5);
+  height: 100px;
+  
+  padding-top: 20px !important;
+
+  .nav {
+    margin-left: 300px;
+  }
+  .name {
+    color: #3f3f3f !important;
+    position: absolute;
+    left: 120px;
+    font-size: 28px !important;
+    letter-spacing: 3px;
+    font-weight: bold;
+    vertical-align: center;
+  }
+
+  .names {
+    left: 200px;
+    font-size: 20px !important;
+    margin-left: 140px !important;
+    letter-spacing: 2px;
+  }
+}
+.mainsec {
+  margin: 5%;
+  .mainCards {
+    
+    margin: 5% !important;
+
+    .mainItem {
+      margin-bottom: 50px !important;
+      float: left;
+      display: block;
+    }
+
+    .mainItem2 {
+      margin-bottom: 50px !important;
+      margin-left: 400px !important;
+    }
+    
+
+    .listCard {
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 20px;
+    }
+
+    .butns {
+      margin-left: 400px !important;
+      clear: both;
+    }
+  }
+}
+
+.secItem {
+  margin-left: 140px !important;
+
+    position: absolute;
+    left:40px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    vertical-align: center;
+
+
+  width: 300px;
+}
