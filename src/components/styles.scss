@@ -1,0 +1,102 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+p{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  margin-left: 1.25rem;
+  padding-right: 1rem;
+  margin-bottom: .5rem;
+}
+
+.split{
+  height: 100%;
+  position: relative;
+  left: 350px;
+}
+
+.inputform{
+  left: 5px;
+  width: 20%;
+  margin-left: 20px;
+  border-right: 3px solid #ddd;
+}
+
+.right{
+  height: 77%;
+  right: 0;
+  width: 70%;
+  
+}
+
+.input {
+  font-family: 'Open Sans', sans-serif;
+  height: 2.3rem;
+  width: 90%;
+  margin-left: 1.25rem;
+  margin-bottom: .5rem;
+  cursor: pointer;
+}
+
+label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  margin-left: 1.25rem;
+  padding-right: 1rem;
+  margin-bottom: .5rem;
+}
+
+.usual {
+  font-family: 'Open Sans', sans-serif;
+  height: 2.5rem;
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+h2{
+  margin-left: 1.25rem;
+  margin-left: 0.5rem;
+}
+
+h1{
+  text-align: left;
+  margin-bottom: 1.25rem;
+  width: 30%;
+  margin-left: 20px;
+  border-right: 3px solid #ddd;
+}
+
+.task-list{
+  border-left: chocolate solid .5rem;
+  margin-bottom: 1rem;
+  margin-left: 70px;
+  width: 60%;
+  position: relative;
+  bottom: 350px;
+  overflow:visible;
+}
+
+.incomplete{
+  float: right;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  height: 2.7rem;
+  margin-right: 1.25rem;
+  cursor: pointer;
+  
+}
+
+.footer{
+  float: right;
+  position: absolute;
+  top: 100%;
+  font-size: 1rem;
+  height: 2.7rem;
+  height: 30px;
+  background-color:black ;
+  width: 100%;
+  color: #ddd;
+}
